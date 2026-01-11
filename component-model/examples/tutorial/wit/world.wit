@@ -1,0 +1,14 @@
+package wasi:sqlite@0.1.0;
+
+interface sqlite {
+    hello: func(name: string);
+}
+
+interface sqlite-vec {
+    init: func(x: u32, y: u32) -> u32;
+}
+
+world exports {
+    export sqlite;
+    export sqlite-vec;
+}
