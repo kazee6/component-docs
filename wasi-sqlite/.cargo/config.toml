@@ -1,2 +1,19 @@
 [build]
 target = "wasm32-wasip2"
+
+[target.wasm32-wasip2]
+linker = "/opt/wasi-sdk/bin/clang"
+
+rustflags = [
+  "-C", "relocation-model=pic",
+  "-C", "link-arg=-Wl,--no-entry",
+  "-C", "link-arg=-Wl,--export-dynamic",
+  "-C", "link-arg=--sysroot=/opt/wasi-sdk/share/wasi-sysroot",
+]
+
+[target.'cfg(target_arch = "wasm32")'.env]
+CFLAGS = "-fPIC -O2"
+CXXFLAGS = "-fPIC -O2"
+
+[env]
+CC_wasm32_wasip2 = "/opt/wasi-sdk/bin/clang"
