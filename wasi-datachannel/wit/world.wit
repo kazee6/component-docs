@@ -1,0 +1,9 @@
+package wasi:datachannel@0.1.0;
+
+interface sqlite {
+    hello: func(name: string);
+}
+
+world exports {
+    export sqlite;
+}
